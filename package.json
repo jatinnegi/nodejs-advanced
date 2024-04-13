@@ -2,6 +2,7 @@
   "name": "nodejs-advanced",
   "version": "1.0.0",
   "description": "NodeJS advanced concepts",
+  "type": "module",
   "main": "index.js",
   "keywords": [],
   "author": "",
