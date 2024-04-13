@@ -1,0 +1,9 @@
+{
+  "name": "nodejs-advanced",
+  "version": "1.0.0",
+  "description": "NodeJS advanced concepts",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
