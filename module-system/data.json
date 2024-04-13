@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Jatin",
+    "programming_language": "NodeJS"
+  },
+  {
+    "id": 2,
+    "name": "Ravi",
+    "programming_language": "Python"
+  },
+  {
+    "id": 3,
+    "name": "Pritesh",
+    "programming_language": "Kotlin"
+  }
+]
