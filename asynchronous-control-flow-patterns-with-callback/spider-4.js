@@ -29,33 +29,21 @@ function download(url, filename, cb) {
   });
 }
 
-export function spiderLinks(currentUrl, body, nesting, cb) {
+export function spiderLinks(currentUrl, body, nesting, queue) {
   if (nesting === 0) {
-    return process.nextTick(cb);
+    return;
   }
+
   const links = getPageLinks(currentUrl, body);
 
   if (links.length === 0) {
-    return process.nextTick(cb);
+    return;
   }
 
-  function iterate(index) {
-    if (index === links.length) {
-      return cb();
-    }
-
-    spider(links[index], nesting - 1, function (err) {
-      if (err) {
-        return cb(err);
-      }
-      iterate(index + 1);
-    });
-  }
-
-  iterate(0);
+  links.forEach((link) => spider(link, nesting - 1, queue));
 }
 
-export default function spider(url, nesting, cb) {
+export function spiderTask(url, nesting, queue, cb) {
   const filename = urlToFilename(url);
 
   fs.readFile(filename, "utf-8", (err, fileContent) => {
@@ -68,9 +56,25 @@ export default function spider(url, nesting, cb) {
         if (err) {
           return cb(err);
         }
-        spiderLinks(filename, requestContent, nesting, cb);
+        spiderLinks(filename, requestContent, nesting, queue);
+        return cb();
       });
     }
-    spiderLinks(filename, fileContent, nesting, cb);
+    spiderLinks(filename, fileContent, nesting, queue);
+    return cb();
+  });
+}
+
+const spidering = new Set();
+
+export default function spider(url, nesting, queue) {
+  if (spidering.has(url)) {
+    return;
+  }
+
+  spidering.add(url);
+
+  queue.pushTask((done) => {
+    spiderTask(url, nesting, queue, done);
   });
 }

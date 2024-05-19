@@ -39,23 +39,33 @@ export function spiderLinks(currentUrl, body, nesting, cb) {
     return process.nextTick(cb);
   }
 
-  function iterate(index) {
-    if (index === links.length) {
-      return cb();
+  let completed = 0;
+  let hasErrors = false;
+
+  function done(err) {
+    if (err) {
+      hasErrors = true;
+      return cb(err);
     }
 
-    spider(links[index], nesting - 1, function (err) {
-      if (err) {
-        return cb(err);
-      }
-      iterate(index + 1);
-    });
+    if (++completed === links.length && !hasErrors) {
+      return cb();
+    }
   }
 
-  iterate(0);
+  links.forEach((link) => spider(link, nesting - 1, done));
 }
 
+const spidering = new Set();
+
 export default function spider(url, nesting, cb) {
+  // Prevent any race condition
+  if (spidering.has(url)) {
+    return process.nextTick(cb);
+  }
+
+  spidering.add(url);
+
   const filename = urlToFilename(url);
 
   fs.readFile(filename, "utf-8", (err, fileContent) => {
