@@ -1,0 +1,7 @@
+The async library (not to be confused with the async/await keywords, which we will
+discuss later in this book) is a very popular solution, in Node.js and JavaScript in
+general, for dealing with asynchronous code. It offers a set of functions that greatly
+simplify the execution of tasks in different configurations, and it also provides useful
+helpers for dealing with collections asynchronously. Even though there are several
+other libraries with a similar goal, async is the de facto standard in Node.js due to its
+historic popularity, especially when using callbacks to define asynchronous tasks.

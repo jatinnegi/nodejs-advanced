@@ -1,0 +1,5 @@
+In this chapter, we also kept refactoring and improving our web crawler example.
+When dealing with asynchronous code, it can sometimes be challenging to figure out
+the right ergonomics that can keep your code simple and effective, so allow yourself
+some time to digest the concepts explored in this chapter and to experiment with
+them.

@@ -1,0 +1,6 @@
+At the beginning of this chapter, it was stated that Node.js programming can be
+tough because of its asynchronous nature, especially for people used to developing
+on other platforms. However, throughout this chapter, you saw how asynchronous
+APIs can be bent to your will. You discovered that the tools at your disposal are
+indeed versatile and provide good solutions to most of your problems, in addition to
+offering a programming style for every taste.

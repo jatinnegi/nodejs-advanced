@@ -1,0 +1,5 @@
+Our journey with asynchronous Node.js programming has just started. In the next
+few chapters, you will be introduced to other broadly adopted techniques that
+leverage promises, and async/await. After you've learned all these techniques, you
+will be able to choose the best solution for your needs or use many of them together
+in the same project.

@@ -1,0 +1,5 @@
+Once you've understood the fundamentals of the asynchronous patterns described
+in this chapter, you shouldn't rely on the simplified implementations presented here
+for your everyday control flow needs. Instead, it's better to adopt a broadly used and
+battle-tested library like async for your production applications, unless your use case
+is so advanced that you require a custom algorithm.

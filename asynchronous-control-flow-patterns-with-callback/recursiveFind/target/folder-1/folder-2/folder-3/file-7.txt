@@ -1,0 +1,8 @@
+If you take a look for a moment at every control flow pattern we have analyzed so
+far, you will see that they can be used as a base to build reusable and more generic
+solutions. For example, we could wrap the unlimited parallel execution algorithm
+into a function that accepts a list of tasks, runs them in parallel, and invokes the
+given callback when all of them are complete. This way of wrapping control flow
+algorithms into reusable functions can lead to a more declarative and expressive way
+of defining asynchronous control flows, and that's exactly what async (nodejsdp.
+link/async) does.

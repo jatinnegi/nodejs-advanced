@@ -1,0 +1,2 @@
+Check out the async documentation (nodejsdp.link/async) to find out more about
+the module and to see some examples.
